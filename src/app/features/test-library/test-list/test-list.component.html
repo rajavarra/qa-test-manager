@@ -1,0 +1,87 @@
+<section class="form-container">
+  <h3>Add New Test Case</h3>
+  <div class="form-row">
+    <input
+      type="text"
+      [(ngModel)]="newTestTitle"
+      placeholder="Test Title..."
+      class="search-input"
+    />
+
+    <select [(ngModel)]="newTestPriority" class="priority-select">
+      <option value="high">High Priority</option>
+      <option value="medium">Medium Priority</option>
+      <option value="low">Low Priority</option>
+    </select>
+
+    <button class="btn-add" (click)="createTest()">➕ Add Test</button>
+  </div>
+</section>
+
+<div class="dashboard-container">
+  <div class="header-row">
+    <div>
+      <h1>Test Library Dashboard</h1>
+      <span class="stat-pill">Total: {{ totalTests() }}</span>
+      <span class="stat-pill">Passed: {{ passedTestsCount() }}</span>
+    </div>
+    <div class="search-container">
+      <input
+        type="text"
+        placeholder="Search tests by title..."
+        (input)="onSearch($event)"
+        class="search-input"
+      />
+    </div>
+    <div class="filter-group">
+      <button
+        [class.active]="currentFilter() === 'all'"
+        (click)="applyFilter('all')"
+      >
+        All
+      </button>
+      <button
+        [class.active]="currentFilter() === 'failed'"
+        (click)="applyFilter('failed')"
+      >
+        Failed
+      </button>
+    </div>
+  </div>
+
+  <div class="list">
+    @for (test of testCases(); track test.id) {
+      <div class="test-card" [class]="'priority-' + test.priority">
+        <div class="test-info">
+          <h3>{{ test.title }}</h3>
+
+          <div
+            class="status-text"
+            [class.passed]="test.status === 'passed'"
+            [class.failed]="test.status === 'failed'"
+          >
+            @if (test.status === "passed") {
+              ✅ Passed
+            } @else if (test.status === "failed") {
+              ⚠️ Failed
+            } @else {
+              🕒 Pending
+            }
+          </div>
+
+          <small>Priority: {{ test.priority | uppercase }}</small>
+        </div>
+
+        <div class="actions">
+          <button (click)="changeStatus(test.id, 'passed')">✅ Pass</button>
+          <button (click)="changeStatus(test.id, 'failed')">❌ Fail</button>
+          <button class="btn-delete" (click)="onDelete(test.id, test.title)">
+            🗑️ Delete
+          </button>
+        </div>
+      </div>
+    } @empty {
+      <div class="empty-state">No tests found for this filter.</div>
+    }
+  </div>
+</div>
