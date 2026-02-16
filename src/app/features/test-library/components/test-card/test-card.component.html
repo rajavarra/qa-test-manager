@@ -1,1 +1,12 @@
-<p>test-card works!</p>
+<div class="test-card" [class]="'priority-' + test().priority">
+  <div class="test-info">
+    <h3>{{ test().title }}</h3>
+    <p class="status" [class]="test().status">Status: {{ test().status }}</p>
+  </div>
+
+  <div class="actions">
+    <button (click)="statusChange.emit('passed')">✅ Pass</button>
+    <button (click)="statusChange.emit('failed')">❌ Fail</button>
+    <button (click)="delete.emit()" class="btn-delete">🗑️</button>
+  </div>
+</div>

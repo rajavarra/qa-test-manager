@@ -1,0 +1,92 @@
+:host {
+  display: block; /* Important for standalone components in grids */
+}
+
+.test-card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eef0f2;
+  border-left: 5px solid #ccc; /* Default border */
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.test-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dynamic Priority Colors */
+.priority-high {
+  border-left-color: #dc3545;
+}
+.priority-medium {
+  border-left-color: #ffc107;
+}
+.priority-low {
+  border-left-color: #9fc7a9;
+}
+
+.test-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  color: #2d3748;
+}
+
+.status {
+  font-size: 0.85rem;
+  color: #718096;
+  margin-bottom: 16px;
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #f7fafc;
+}
+
+.status.passed {
+  color: #276749;
+  background: #c6f6d5;
+}
+.status.failed {
+  color: #9b2c2c;
+  background: #fed7d7;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto; /* Pushes buttons to the bottom */
+}
+
+button {
+  flex: 1;
+  padding: 6px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background: #f7fafc;
+}
+
+.btn-delete {
+  flex: 0; /* Don't stretch the delete button */
+  color: #e53e3e;
+  border-color: #fed7d7;
+}
+
+.btn-delete:hover {
+  background: #fff5f5;
+  border-color: #e53e3e;
+}

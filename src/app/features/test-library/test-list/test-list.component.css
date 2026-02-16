@@ -45,63 +45,6 @@
   border-color: #007bff;
 }
 
-/* Refined Cards */
-.test-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-left: 6px solid #dee2e6; /* Neutral default */
-}
-
-/* Priority Accents - Using the left border instead of the whole outline */
-.priority-high {
-  border-left-color: #dc3545;
-}
-.priority-medium {
-  border-left-color: #ffc107;
-}
-.priority-low {
-  border-left-color: #6c757d;
-}
-
-.test-info h3 {
-  margin: 0 0 8px 0;
-  color: #343a40;
-}
-
-/* Status Indicators */
-.status-text {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-}
-
-.passed {
-  color: #28a745;
-}
-.failed {
-  color: #dc3545;
-}
-
-/* Action Buttons */
-.actions button {
-  margin-left: 8px;
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: 1px solid #dee2e6;
-  background: white;
-  cursor: pointer;
-}
-
-.actions button:hover {
-  background: #f1f3f5;
-}
 .search-container {
   margin-bottom: 20px;
 }

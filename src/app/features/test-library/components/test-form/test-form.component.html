@@ -1,1 +1,19 @@
-<p>test-form works!</p>
+<section class="form-container">
+  <h3>Add New Test Case</h3>
+  <div class="form-row">
+    <input
+      type="text"
+      [(ngModel)]="newTitle"
+      placeholder="Test Title..."
+      class="search-input"
+    />
+
+    <select [(ngModel)]="newPriority" class="priority-select">
+      <option value="high">High Priority</option>
+      <option value="medium">Medium Priority</option>
+      <option value="low">Low Priority</option>
+    </select>
+
+    <button class="btn-add" (click)="createTest()">➕ Add Test</button>
+  </div>
+</section>

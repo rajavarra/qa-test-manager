@@ -1,20 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { TestDataService } from '../../../core/services/test-data.service';
-import { UpperCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TestCardComponent } from "../components/test-card/test-card.component";
+import { TestFormComponent } from "../components/test-form/test-form.component";
 
 @Component({
   selector: 'qtm-test-list',
-  imports: [UpperCasePipe, FormsModule],
+  imports: [FormsModule, TestCardComponent, TestFormComponent],
   templateUrl: './test-list.component.html',
   styleUrl: './test-list.component.css'
 })
 export class TestListComponent {
   private testService = inject(TestDataService);
 
-  // Model for the new test
-  newTestTitle = '';
-  newTestPriority: 'high' | 'medium' | 'low' = 'medium';
+
 
   testCases = this.testService.filteredTestCases;
   totalTests = this.testService.totalTests;
@@ -46,18 +45,6 @@ export class TestListComponent {
   onDelete(id: number, title: string) {
     if (confirm(`Are you sure you want to delete "${title}"?`)) {
       this.testService.deleteTest(id);
-    }
-  }
-
-  createTest() {
-    if (this.newTestTitle.trim()) {
-      this.testService.addTest({
-        title: this.newTestTitle,
-        priority: this.newTestPriority
-      });
-      //Reset Form
-      this.newTestTitle = '';
-      this.newTestPriority = 'medium';
     }
   }
 }
